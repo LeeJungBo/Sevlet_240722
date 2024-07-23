@@ -43,7 +43,7 @@ public class Test10Controller extends HttpServlet {
 		}else if(!passWord.equals(userPassword)) {
 			out.println("<h3>password가 일치하지 않습니다.</h3>");
 		}else {
-			out.println("<div><h1>" + userMap.get("name") + "</h1></div>");
+			out.println("<div><h1>" + userMap.get("name") + "님 지원이 완료되었습니다.</h1></div>");
 		}
 		
 		out.println("</body></html>");

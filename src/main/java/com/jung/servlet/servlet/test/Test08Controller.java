@@ -41,7 +41,7 @@ public class Test08Controller extends HttpServlet {
 			if(text.contains(search)) {
 				
 				String newText= text.replace(search, "<b>" + search + "</b>");//이런 문자열은 반드시 return값으로 변경해줘서 바꿔줘야한다.
-	
+				//이렇게 리턴값을 변수에 저장한채 나올수있게 해준다
 				out.println("<div>" + newText + "</div> <hr>");
 			}
 

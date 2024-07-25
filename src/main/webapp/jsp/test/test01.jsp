@@ -24,7 +24,7 @@
 			sumScores += scores[i];
 		}
 	%>
-	<div><h1>점수 평균은 <%= sumScores / scores.length %> 입니다.</h1></div>
+	<div><h1>점수 평균은 <%= sumScores / scores.length %>점 입니다.</h1></div>
 	
 	
 	<%-- 2. 채점 결과
@@ -38,7 +38,7 @@
 	int sum = 0;
 	for(String score:scoreList){
 		if(score.equals("O")){
-			sum = sum + 10; 
+			sum = sum + 10; // score += 10 이런식도 됨
 		}else if(score.equals("X")){
 			sum = sum + 0;
 		}
@@ -57,12 +57,11 @@
 			int total = 0;
 			for(int i = 0; i < N + 1; i++){
 			
-			total = total + i;
+			total = total + i; // sum += i; 이렇게도 됨
 			
 			}
 			
 			return total;
-		
 		}
 	%>
 	<div><h1>1에서 50까지의 합은 <%= getSum(50) %></h1></div>
@@ -84,7 +83,7 @@
 		int age = currentYear - year + 1;
 	
 	%>
-	<div><h1>20010820 의 나이는 <%= age %>살 입니다.</h1></div>
+	<div><h1><%= birthDay %> 의 나이는 <%= age %>살 입니다.</h1></div>
 		
 	
 	

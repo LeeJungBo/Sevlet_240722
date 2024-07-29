@@ -16,6 +16,7 @@
 		int year = Integer.parseInt(birthday.substring(0,4));
 		
 		int age = 2024 - year + 1;
+	
 	%>
 
 	<table border="1">

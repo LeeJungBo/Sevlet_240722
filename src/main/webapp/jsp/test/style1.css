@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+#wrap{
+	width : 1200px;
+	margin : 0 auto;
+}
+
+header{
+	height : 100px;
+}
+
+
+
+.main-manu{
+	height : 50px;
+}
+
+section > .banner{
+	border : 2px solid green;
+}
+
+section > .banner1{/*여기서 사진 크기(하위요소)에 따라 상위요소(테두리)가 따라간다 따라서 높이를 지워줘도 초록색 테두리는 남아있다.*/
+	border : 2px solid green;
+}
+
+
+footer{
+	height : 30px;
+}

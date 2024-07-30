@@ -7,9 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<%
+	<%
     List<Map<String, String>> list = new ArrayList<>();
     Map<String, String> map = new HashMap<String, String>() {{ put("ch", "5"); put("name", "SBS"); put("category", "지상파"); } };
     list.add(map);
@@ -47,10 +48,50 @@
     list.add(map);
     map = new HashMap<String, String>() {{ put("ch", "121"); put("name", "KBSN 스포츠"); put("category", "스포츠"); } };
     list.add(map);
-    
-    
-%>
+
 	
+    String what = request.getParameter("what");
+    
+	//이렇게 비슷한 화면에서 어떤 부분만 바뀔때는 한페이지로 모두 표현이 가능하다.
+%>
+	<div id="wrap">
+		<header class="d-flex justify-content-center align-items-center"><h1 class="text-danger">SK broadband IPTV</h1></header>
+		<nav class="main-manu bg-danger">
+			<ul class="nav nav-fill">
+				<li class="nav-item"><a href="/jsp/test/test09.jsp?" class="text-white">전체</a></li>
+				<li class="nav-item"><a href="/jsp/test/test09.jsp?what=지상파" class="text-white">지상파</a></li>
+				<li class="nav-item"><a href="/jsp/test/test09.jsp?what=드라마" class="text-white">드라마</a></li>
+				<li class="nav-item"><a href="/jsp/test/test09.jsp?what=예능" class="text-white">예능</a></li>
+				<li class="nav-item"><a href="/jsp/test/test09.jsp?what=영화" class="text-white">영화</a></li>
+				<li class="nav-item"><a href="/jsp/test/test09.jsp?what=스포츠" class="text-white">스포츠</a></li>
+			</ul>
+		</nav>
+		<section class=" contents">
+			<table class="table text-center"><%--아하 이 아이템이 위에 nav들을 꽉 채울 아이템들을 얘기하는구나 --%>
+				<thead>
+					<tr>
+						<th>채널</th>
+						<th>채널명</th>
+						<th>카테고리</th>
+					<tr>
+				</thead>
+				<tbody>
+					<% for(Map<String, String>broadcastStation:list){ %>
+						<% if( what == null || what.equals(broadcastStation.get("category")) ){ %>
+					<tr>       <%-- 이렇게 what에 안에 들은 값이 없을때는 == 으로 null로 표현 (equals가 아님) --%>
+						<td><%= broadcastStation.get("ch") %></td>
+						<td><%= broadcastStation.get("name") %></td>
+						<td><%= broadcastStation.get("category") %></td>
+					</tr>
+						<% } %>
+					<% } %>
+				</tbody>
+			</table>
+		</section>
+		<footer class="text-center">
+			<div>copyright</div>
+		</footer>	
+	</div>
 
 
 

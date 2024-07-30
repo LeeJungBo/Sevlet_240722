@@ -64,29 +64,33 @@
 	    	}
 	    }
 	    
-	   String title = request.getParameter("title");
-	    
+	   String title = request.getParameter("title");// 이거 아이디로 받아와도 됨 // 정수로 변환
+	   // int id = Integer.parseInt(request.getParameter("id")); 이렇게도 가능
 	    
 	    
 	%>
 	
 	<% for(Map<String, Object> book: list) { %>
-		<% if(title.equals(book.get("title"))){ %>
+		<% if(title.equals(book.get("title"))){ %> <%-- int id = (Integer)book.get("id") --%>
 	<div class="d-flex">
 		<div>
 			<div><img src="<%= book.get("image") %>"></div>
 		</div>
-		<div>
-			<div class="d-none"><%= book.get("id") %></div>
-			<div><%= book.get("title") %></div>
-			<div><%= book.get("author") %></div>
-			<div><%= book.get("publisher") %></div>
+		<div class="ml-4">
+			<div class="d-none"><%= book.get("id") %></div><%--  --%>
+			<div class="display-1 font-weight-bold"><%= book.get("title") %></div>
+			<div class="display-2 text-info"><%= book.get("author") %></div>
+			<div class="display-4"><%= book.get("publisher") %></div>
 		</div>
 	</div>
 		 <% } %>
 	<% } %>
 	
-	
+	<li class="nav-item"><a href="/jsp/test/test09.jsp?what=<%=  %>" class="text-white">지상파</a></li>
+			<li class="nav-item"><a href="/jsp/test/test09.jsp?what=<%=  %>" class="text-white">드라마</a></li>
+			<li class="nav-item"><a href="/jsp/test/test09.jsp?what=<%=  %>" class="text-white">예능</a></li>
+			<li class="nav-item"><a href="/jsp/test/test09.jsp?what=<%=  %>" class="text-white">영화</a></li>
+			<li class="nav-item"><a href="/jsp/test/test09.jsp?what=<%=  %>" class="text-white">스포츠</a></li>
 	
 
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -94,7 +94,7 @@
 		<form method="get" action="/jsp/test/test10.jsp">
 		<header class="d-flex align-items-center">
 			<div class="logo"><h2 class="text-info font-weight-bold"><a href="/jsp/test/test10-input.jsp">Melong</a></h2></div>
-			<div class="ml-4 col-4 d-flex"><input type="text" name="title" class="form-control w-75"><button class="btn btn-success">검색</button></div>
+			<div class="ml-4 col-4 d-flex"><input type="text" name="title" class="form-control w-75"><button type="submit" class="btn btn-success">검색</button></div>
 		</header>
 		</form>
 		<nav class="main-manu">

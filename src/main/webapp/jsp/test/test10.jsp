@@ -90,15 +90,15 @@
     musicList.add(musicInfo);
     
     int targetId = Integer.parseInt(request.getParameter("id"));
+    
+    String targetTitle = request.getParameter("title");
 %>
 
 	<div id="wrap">
-		<form method="get" action="/jsp/test/test10-input.jsp">
 		<header class="d-flex align-items-center">
 			<div class="logo"><h2 class="text-info font-weight-bold"><a href="/jsp/test/test10-input.jsp">Melong</a></h2></div>
-			<div class="ml-4 col-4 d-flex"><input type="text" name="what" class="form-control w-75"><button class="btn btn-success">검색</button></div>
+			<div class="ml-4 col-4 d-flex"><input type="text" name="title" class="form-control w-75"><button class="btn btn-success">검색</button></div>
 		</header>
-		</form>
 		<nav class="main-manu">
 			<ul class="nav d-flex text-dark">
 				<li class="nav-item"><a href="#" class="text-dark nav-link font-weight-bold">멜롱차트</a></li>
@@ -111,8 +111,9 @@
 		<section class="contents">
 				<div><h1 class="mt-4">곡 정보</h1></div>
 				<% for(Map<String, Object>music:musicList){ %>
-					<% int id = (Integer)music.get("id"); %>	
-						<%if(id == targetId){ %>
+					<% int id = (Integer)music.get("id"); %>
+					<% String title = (String)music.get("title"); %>	
+						<%if(id == targetId || title.equals(targetTitle)){ %>
 				<div class=" d-flex banner1 mt-2 p-3">
 					<div>	<%-- 제목은 똑같은게 있을수있기에 id로 할것(이건 object여서 다운캐스팅해줘야한다. --%>
 						<img src="<%= music.get("thumbnail")%>">

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+#wrap{
+	width:1200px;
+	margin: 0 auto;
+}
+
+
+header{
+	height:100px;
+}
+
+
+nav{
+	height:100px;
+}
+
+
+section{
+	height:550px;
+}
+
+.goods-box{
+	border: 2px solid coral;
+	padding: 10px;
+}
+
+.goods-box:hover{
+	backgound-color:rgb(255, 255, 128);
+}
+
+.goods-box > .img-box{
+	width: 330px;
+	height: 180px;
+	overflow: hidden;
+}
+
+footer{
+	height:100px;
+}

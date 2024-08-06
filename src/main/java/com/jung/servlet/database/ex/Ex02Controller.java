@@ -2,8 +2,9 @@ package com.jung.servlet.database.ex;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,23 +26,17 @@ public class Ex02Controller extends HttpServlet {
 		//접속(메소드로 한방에 끝내버림)
 		mysqlService.connect();
 		
-		mysqlService.select("SELECT * FROM `used_goods`");
+		List<Map<String, Object>> resultList = mysqlService.select("SELECT * FROM `used_goods`");
 		
-		ResultSet resultSet = mysqlService.select("SELECT * FROM `used_goods`");
-		
-		try {
-			while(resultSet.next()) {
-				String title = resultSet.getString("title");
-				int price = resultSet.getInt("price");
-				
-				out.print("제목 : " + title + "가격 : " + price);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for(Map<String, Object> resultMap:resultList) {
+			
+			String title = (String)resultMap.get("title");
+			int price = (Integer)resultMap.get("price");
+			
+			out.println("제목 : " + title + "가격 : " + price);
 		}
 		
-		String query = "INSERT INTO `used_goods`\r\n"
+		String query = "INSERT INTO `used_goods`\r\n" //브라우저에서 계속 새로고침을 하면 이게 insert 삽입되는거여서 계속 추가됨
 				+ "(`sellerId`, `title`, `price`, `description`)\r\n"
 				+ "VALUE\r\n"
 				+ "(3, '고양이 간식 팝니다', 2000, '안먹어서 팔아요');";
@@ -49,7 +44,7 @@ public class Ex02Controller extends HttpServlet {
 		int count = mysqlService.update(query);
 		// 의도된것은 1행만 수정했으니 1만 떠야한다.
 		out.println("삽입 결과 : " + count);
-		
+	
 	}
 	
 }
